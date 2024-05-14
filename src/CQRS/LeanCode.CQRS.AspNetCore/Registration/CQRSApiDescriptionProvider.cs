@@ -16,12 +16,17 @@ internal sealed class CQRSApiDescriptionProvider : IApiDescriptionProvider
     private const string ApplicationJson = "application/json";
 
     private readonly EndpointDataSource endpointDataSource;
+    private readonly CQRSApiDescriptionConfiguration configuration;
 
     public int Order => -1200;
 
-    public CQRSApiDescriptionProvider(EndpointDataSource endpointDataSource)
+    public CQRSApiDescriptionProvider(
+        EndpointDataSource endpointDataSource,
+        CQRSApiDescriptionConfiguration configuration
+    )
     {
         this.endpointDataSource = endpointDataSource;
+        this.configuration = configuration;
     }
 
     public void OnProvidersExecuting(ApiDescriptionProviderContext context)
@@ -40,7 +45,7 @@ internal sealed class CQRSApiDescriptionProvider : IApiDescriptionProvider
 
     public void OnProvidersExecuted(ApiDescriptionProviderContext context) { }
 
-    private static ApiDescription CreateApiDescription(RouteEndpoint routeEndpoint, CQRSObjectMetadata metadata)
+    private ApiDescription CreateApiDescription(RouteEndpoint routeEndpoint, CQRSObjectMetadata metadata)
     {
         var apiDescription = new ApiDescription
         {
@@ -50,7 +55,7 @@ internal sealed class CQRSApiDescriptionProvider : IApiDescriptionProvider
             ActionDescriptor = new ActionDescriptor
             {
                 DisplayName = routeEndpoint.DisplayName,
-                RouteValues = { ["controller"] = "CQRS", }, // Required by Swagger (Swashbuckle)
+                RouteValues = configuration.RouteValuesMapping(routeEndpoint),
             },
         };
         apiDescription.SupportedRequestFormats.Add(new() { MediaType = ApplicationJson });

@@ -191,7 +191,7 @@ public class CQRSApiDescriptionProviderTests
     {
         var dataSource = CreateDataSource(forObject);
         var context = new ApiDescriptionProviderContext([]);
-        new CQRSApiDescriptionProvider(dataSource).OnProvidersExecuting(context);
+        new CQRSApiDescriptionProvider(dataSource, new()).OnProvidersExecuting(context);
         return context.Results.ToList();
     }
 

@@ -7,6 +7,7 @@ using LeanCode.CQRS.Execution;
 using LeanCode.CQRS.Security;
 using LeanCode.CQRS.Validation;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -36,9 +37,14 @@ public static class ServiceCollectionCQRSExtensions
         return new CQRSServicesBuilder(serviceCollection, objectsSource);
     }
 
-    public static IServiceCollection AddCQRSApiExplorer(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddCQRSApiExplorer(
+        this IServiceCollection serviceCollection,
+        CQRSApiDescriptionConfiguration? configuration = null
+    )
     {
-        serviceCollection.AddTransient<IApiDescriptionProvider, CQRSApiDescriptionProvider>();
+        serviceCollection.AddTransient<IApiDescriptionProvider, CQRSApiDescriptionProvider>(sp =>
+            new(sp.GetRequiredService<EndpointDataSource>(), configuration ?? new())
+        );
         return serviceCollection;
     }
 }
