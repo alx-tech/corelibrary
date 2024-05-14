@@ -21,6 +21,12 @@ public override void ConfigureServices(IServiceCollection services)
 }
 ```
 
+The `AddCQRSApiExplorer` method has an optional parameter that accepts a configuration override.
+For now, it only allows to set a custom mapping of the `RouteValues` parameter,
+which is used by OpenAPI generation tools to pass some metadata, by which the endpoints
+could be grouped on the OpenAPI UI, for example. Usage of this metadata varies between
+different OpenAPI UI implementations, so please check the tools documentation before overriding it.
+
 ## JSON Casing
 
 Every integration uses different configuration for the generated payload types. It is highly probable that the default configuration of JSON serializer for these integrations will use wrong property casing. Unfortunately, every tool is configured differently.
