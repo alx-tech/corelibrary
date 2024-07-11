@@ -1,27 +1,26 @@
-using System.Collections.Immutable;
+using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Net.Http.Headers;
-using System.Reflection;
-using System.Runtime.Serialization;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+using LeanCode.Kratos.Client.Api;
+using LeanCode.Kratos.Client.Model;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Ory.Kratos.Client.Api;
-using Ory.Kratos.Client.Model;
-using static Ory.Kratos.Client.Model.KratosSessionAuthenticationMethod;
+using static LeanCode.Kratos.Client.Model.KratosSessionAuthenticationMethod;
 
 namespace LeanCode.Kratos;
 
-public class KratosAuthenticationHandler<TOptions> : AuthenticationHandler<TOptions>
+public partial class KratosAuthenticationHandler<TOptions> : AuthenticationHandler<TOptions>
     where TOptions : KratosAuthenticationOptions, new()
 {
-    private static readonly ImmutableDictionary<MethodEnum, string> AuthenticationMethods =
-        ExtractEnumNames<MethodEnum>();
+    private static readonly FrozenDictionary<MethodEnum, string> AuthenticationMethods = ExtractEnumNames<MethodEnum>();
 
-    private static readonly ImmutableDictionary<KratosAuthenticatorAssuranceLevel, string> AssuranceLevels =
+    private static readonly FrozenDictionary<KratosAuthenticatorAssuranceLevel, string> AssuranceLevels =
         ExtractEnumNames<KratosAuthenticatorAssuranceLevel>();
 
     private readonly IFrontendApi api;
@@ -42,13 +41,14 @@ public class KratosAuthenticationHandler<TOptions> : AuthenticationHandler<TOpti
     {
         try
         {
-            var session = await GetSessionAsync();
+            var response = await GetSessionAsync();
+            var session = response?.Ok();
 
             if (session is null)
             {
                 return AuthenticateResult.NoResult();
             }
-            else if (!session.Active)
+            else if (session.Active != true)
             {
                 return AuthenticateResult.Fail("Session is not active.");
             }
@@ -56,7 +56,7 @@ public class KratosAuthenticationHandler<TOptions> : AuthenticationHandler<TOpti
             {
                 return AuthenticateResult.Fail("Session does not contain an identity.");
             }
-            if (!Options.AllowInactiveIdentities && session.Identity.State != KratosIdentityState.Active)
+            if (!Options.AllowInactiveIdentities && session.Identity.State != KratosIdentity.StateEnum.Active)
             {
                 return AuthenticateResult.Fail("Identity is not active.");
             }
@@ -76,11 +76,11 @@ public class KratosAuthenticationHandler<TOptions> : AuthenticationHandler<TOpti
         }
     }
 
-    protected virtual Task<KratosSession?> GetSessionAsync()
+    protected virtual async Task<IToSessionApiResponse?> GetSessionAsync()
     {
         if (Request.Headers.TryGetValue("X-Session-Token", out var token) && !string.IsNullOrEmpty(token))
         {
-            return api.ToSessionAsync(xSessionToken: token);
+            return await api.ToSessionAsync(xSessionToken: token.ToString());
         }
         else if (
             AuthenticationHeaderValue.TryParse(Request.Headers.Authorization, out var value)
@@ -88,17 +88,17 @@ public class KratosAuthenticationHandler<TOptions> : AuthenticationHandler<TOpti
             && !string.IsNullOrEmpty(value.Parameter)
         )
         {
-            return api.ToSessionAsync(xSessionToken: value.Parameter);
+            return await api.ToSessionAsync(xSessionToken: value.Parameter);
         }
         else if (
             Request.Cookies.TryGetValue(Options.SessionCookieName, out var cookie) && !string.IsNullOrEmpty(cookie)
         )
         {
-            return api.ToSessionAsync(cookie: $"{Options.SessionCookieName}={cookie}");
+            return await api.ToSessionAsync(cookie: $"{Options.SessionCookieName}={cookie}");
         }
         else
         {
-            return Task.FromResult(null as KratosSession);
+            return null;
         }
     }
 
@@ -106,19 +106,19 @@ public class KratosAuthenticationHandler<TOptions> : AuthenticationHandler<TOpti
     {
         var claims = new List<Claim>
         {
-            new(Options.NameClaimType, session.Identity.Id),
-            new("iss", api.Configuration.BasePath),
-            new("iat", ToUnixTimeSecondsString(session.IssuedAt)),
-            new("exp", ToUnixTimeSecondsString(session.ExpiresAt)),
-            new("auth_time", ToUnixTimeSecondsString(session.AuthenticatedAt)),
+            new(Options.NameClaimType, session.Identity!.Id),
+            new("iss", SchemaUrlPathRegex().Replace(session.Identity.SchemaUrl, string.Empty)),
+            new("iat", ToUnixTimeSecondsString(session.IssuedAt!.Value)),
+            new("exp", ToUnixTimeSecondsString(session.ExpiresAt!.Value)),
+            new("auth_time", ToUnixTimeSecondsString(session.AuthenticatedAt!.Value)),
         };
 
-        if (AssuranceLevels.TryGetValue(session.AuthenticatorAssuranceLevel, out var aal))
+        if (session.AuthenticatorAssuranceLevel is { } aal && AssuranceLevels.TryGetValue(aal, out var aalName))
         {
-            claims.Add(new("acr", aal));
+            claims.Add(new("acr", aalName));
         }
 
-        foreach (var am in session.AuthenticationMethods)
+        foreach (var am in session.AuthenticationMethods ?? [])
         {
             if (am.Method is { } method && AuthenticationMethods.TryGetValue(method, out var methodName))
             {
@@ -131,28 +131,21 @@ public class KratosAuthenticationHandler<TOptions> : AuthenticationHandler<TOpti
         return claims;
     }
 
+    [GeneratedRegex("/schemas/[^/]+$")]
+    private static partial Regex SchemaUrlPathRegex();
+
     private static string ToUnixTimeSecondsString(DateTime value) =>
         new DateTimeOffset(value).ToUnixTimeSeconds().ToString(CultureInfo.InvariantCulture);
 
-    private static ImmutableDictionary<T, string> ExtractEnumNames<
+    private static FrozenDictionary<T, string> ExtractEnumNames<
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)] T
     >()
         where T : struct, Enum
     {
-        return Enum.GetValues<T>()
-            .Distinct()
-            .Select(v =>
-                (
-                    Value: v,
-                    Name: (
-                        typeof(T)
-                            .GetField(v.ToString(), BindingFlags.Public | BindingFlags.Static)
-                            ?.GetCustomAttribute(typeof(EnumMemberAttribute)) as EnumMemberAttribute
-                    )?.Value
-                )
-            )
-            .Where(t => t.Name is not null)
-            .ToImmutableDictionary(t => t.Value, t => t.Name!);
+        return Enumerable
+            .Zip(Enum.GetNames<T>(), Enum.GetValues<T>())
+            .DistinctBy(p => p.Second)
+            .ToFrozenDictionary(p => p.Second, p => JsonNamingPolicy.SnakeCaseLower.ConvertName(p.First));
     }
 }
 

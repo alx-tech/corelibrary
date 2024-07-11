@@ -6,15 +6,6 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class KratosExtensions
 {
-    public static IServiceCollection AddKratosClients(
-        this IServiceCollection services,
-        Action<KratosClientFactoryBuilder> configureClients
-    )
-    {
-        configureClients(new(services));
-        return services;
-    }
-
     public static AuthenticationBuilder AddKratos<
         TOptions,
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] THandler

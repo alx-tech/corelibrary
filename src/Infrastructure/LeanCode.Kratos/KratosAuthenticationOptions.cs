@@ -1,6 +1,6 @@
 using System.Security.Claims;
+using LeanCode.Kratos.Client.Model;
 using Microsoft.AspNetCore.Authentication;
-using Ory.Kratos.Client.Model;
 
 namespace LeanCode.Kratos;
 

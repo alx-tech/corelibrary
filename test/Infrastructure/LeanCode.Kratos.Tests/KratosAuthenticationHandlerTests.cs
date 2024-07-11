@@ -1,3 +1,7 @@
+using System.Net;
+using LeanCode.Kratos.Client.Api;
+using LeanCode.Kratos.Client.Client;
+using LeanCode.Kratos.Client.Model;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
@@ -6,12 +10,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Primitives;
 using NSubstitute;
-using NSubstitute.Core;
-using Ory.Kratos.Client.Api;
-using Ory.Kratos.Client.Client;
-using Ory.Kratos.Client.Model;
+using NSubstitute.ExceptionExtensions;
 using Xunit;
-using static Ory.Kratos.Client.Model.KratosSessionAuthenticationMethod;
+using static LeanCode.Kratos.Client.Model.KratosSessionAuthenticationMethod;
 
 namespace LeanCode.Kratos.Tests;
 
@@ -25,31 +26,48 @@ public class KratosAuthenticationHandlerTests
         new(
             active: true,
             authenticatedAt: DateTime.UnixEpoch.AddSeconds(1),
-            authenticationMethods: new(1)
-            {
-                new(KratosAuthenticatorAssuranceLevel.Aal1, DateTime.UnixEpoch.AddSeconds(1), MethodEnum.Password)
-            },
+            authenticationMethods: new(
+                new(1)
+                {
+                    new(KratosAuthenticatorAssuranceLevel.Aal1, DateTime.UnixEpoch.AddSeconds(1), MethodEnum.Password)
+                }
+            ),
             authenticatorAssuranceLevel: KratosAuthenticatorAssuranceLevel.Aal1,
             expiresAt: DateTime.UnixEpoch.AddSeconds(3),
             id: Guid.NewGuid().ToString(),
             identity: new(
-                id: Guid.NewGuid().ToString(),
-                metadataPublic: new MetadataPublic(true),
-                schemaId: "user",
-                schemaUrl: "https://auth.local.lncd.pl/schemas/dXNlcg",
-                state: KratosIdentityState.Active,
-                traits: new Traits("test@leancode.pl")
+                new(
+                    id: Guid.NewGuid().ToString(),
+                    metadataPublic: new MetadataPublic(true),
+                    schemaId: "user",
+                    schemaUrl: "https://auth.local.lncd.pl/schemas/dXNlcg",
+                    state: KratosIdentity.StateEnum.Active,
+                    traits: new Traits("test@leancode.pl")
+                )
             ),
             issuedAt: DateTime.UnixEpoch.AddSeconds(2)
         );
+
+    private readonly IToSessionApiResponse sessionResponse;
+
+    public KratosAuthenticationHandlerTests()
+    {
+        sessionResponse = Substitute.For<IToSessionApiResponse>();
+        sessionResponse.Ok().Returns(session);
+    }
 
     [Fact]
     public async Task Returns_none_result_if_credentials_are_missing()
     {
         var (handler, api) = ConfigureServices();
 
-        api.ToSessionAsync(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<CancellationToken>())
-            .Returns(ci => Task.FromResult(session));
+        api.ToSessionOrDefaultAsync(
+                Arg.Any<Option<string>>(),
+                Arg.Any<Option<string>>(),
+                Arg.Any<Option<string>>(),
+                Arg.Any<CancellationToken>()
+            )
+            .Returns(Task.FromResult(sessionResponse));
 
         var result = await AuthenticateAsync(handler, new() { ["Cookie"] = "not_a_kratos_session=foo" });
 
@@ -62,8 +80,8 @@ public class KratosAuthenticationHandlerTests
     {
         var (handler, api) = ConfigureServices();
 
-        api.ToSessionAsync(null, $"{KratosDefaults.SessionCookieName}=foo", Arg.Any<CancellationToken>())
-            .Returns(ci => Task.FromResult(session));
+        api.ToSessionAsync(default, $"{KratosDefaults.SessionCookieName}=foo", default, Arg.Any<CancellationToken>())
+            .Returns(Task.FromResult(sessionResponse));
 
         var result = await AuthenticateAsync(handler, new() { ["Cookie"] = "ory_kratos_session=foo" });
 
@@ -77,7 +95,8 @@ public class KratosAuthenticationHandlerTests
     {
         var (handler, api) = ConfigureServices();
 
-        api.ToSessionAsync("foo", null, Arg.Any<CancellationToken>()).Returns(ci => Task.FromResult(session));
+        api.ToSessionAsync("foo", default, default, Arg.Any<CancellationToken>())
+            .Returns(Task.FromResult(sessionResponse));
 
         var result = await AuthenticateAsync(handler, new() { [headerName] = headerValue });
 
@@ -89,10 +108,17 @@ public class KratosAuthenticationHandlerTests
     {
         var (handler, api) = ConfigureServices();
 
-        api.ToSessionAsync(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<CancellationToken>())
-            .Returns(
-                (Func<CallInfo, KratosSession>)(
-                    ci => throw new ApiException(401, "The request could not be authorized")
+        api.ToSessionAsync(
+                Arg.Any<Option<string>>(),
+                Arg.Any<Option<string>>(),
+                Arg.Any<Option<string>>(),
+                Arg.Any<CancellationToken>()
+            )
+            .Throws(
+                new ApiException(
+                    "The request could not be authorized",
+                    HttpStatusCode.Unauthorized,
+                    @"{""error"":{""code"":401,""message"":""The request could not be authorized""}}"
                 )
             );
 
@@ -100,7 +126,7 @@ public class KratosAuthenticationHandlerTests
 
         Assert.False(result.Succeeded);
         var exception = Assert.IsType<ApiException>(result.Failure);
-        Assert.Equal(401, exception.ErrorCode);
+        Assert.Equal(HttpStatusCode.Unauthorized, exception.StatusCode);
     }
 
     [Theory]
@@ -110,10 +136,17 @@ public class KratosAuthenticationHandlerTests
     {
         var (handler, api) = ConfigureServices();
 
-        api.ToSessionAsync(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<CancellationToken>())
-            .Returns(
-                (Func<CallInfo, KratosSession>)(
-                    ci => throw new ApiException(401, "The request could not be authorized")
+        api.ToSessionAsync(
+                Arg.Any<Option<string>>(),
+                Arg.Any<Option<string>>(),
+                Arg.Any<Option<string>>(),
+                Arg.Any<CancellationToken>()
+            )
+            .Throws(
+                new ApiException(
+                    "The request could not be authorized",
+                    HttpStatusCode.Unauthorized,
+                    @"{""error"":{""code"":401,""message"":""The request could not be authorized""}}"
                 )
             );
 
@@ -121,7 +154,7 @@ public class KratosAuthenticationHandlerTests
 
         Assert.False(result.Succeeded);
         var exception = Assert.IsType<ApiException>(result.Failure);
-        Assert.Equal(401, exception.ErrorCode);
+        Assert.Equal(HttpStatusCode.Unauthorized, exception.StatusCode);
     }
 
     [Fact]
@@ -131,7 +164,8 @@ public class KratosAuthenticationHandlerTests
 
         session.Active = false;
 
-        api.ToSessionAsync("foo", null, Arg.Any<CancellationToken>()).Returns(ci => Task.FromResult(session));
+        api.ToSessionAsync("foo", default, default, Arg.Any<CancellationToken>())
+            .Returns(Task.FromResult(sessionResponse));
 
         var result = await AuthenticateAsync(handler, new() { ["X-Session-Token"] = "foo" });
 
@@ -143,9 +177,10 @@ public class KratosAuthenticationHandlerTests
     {
         var (handler, api) = ConfigureServices(cfg => cfg.AllowInactiveIdentities = false);
 
-        session.Identity.State = KratosIdentityState.Inactive;
+        session.Identity.State = KratosIdentity.StateEnum.Inactive;
 
-        api.ToSessionAsync("foo", null, Arg.Any<CancellationToken>()).Returns(ci => Task.FromResult(session));
+        api.ToSessionAsync("foo", default, default, Arg.Any<CancellationToken>())
+            .Returns(Task.FromResult(sessionResponse));
 
         var result = await AuthenticateAsync(handler, new() { ["X-Session-Token"] = "foo" });
 
@@ -157,9 +192,10 @@ public class KratosAuthenticationHandlerTests
     {
         var (handler, api) = ConfigureServices(cfg => cfg.AllowInactiveIdentities = true);
 
-        session.Identity.State = KratosIdentityState.Inactive;
+        session.Identity.State = KratosIdentity.StateEnum.Inactive;
 
-        api.ToSessionAsync("foo", null, Arg.Any<CancellationToken>()).Returns(ci => Task.FromResult(session));
+        api.ToSessionAsync("foo", default, default, Arg.Any<CancellationToken>())
+            .Returns(Task.FromResult(sessionResponse));
 
         var result = await AuthenticateAsync(handler, new() { ["X-Session-Token"] = "foo" });
 
@@ -191,14 +227,15 @@ public class KratosAuthenticationHandlerTests
                     c.Add(new(o.RoleClaimType, "developer"));
                 }
 
-                if (s.Identity.MetadataPublic is MetadataPublic { IsAdmin: true })
+                if (s.Identity.MetadataPublic is Option<object> { Value: MetadataPublic { IsAdmin: true } })
                 {
                     c.Add(new(o.RoleClaimType, "admin"));
                 }
             };
         });
 
-        api.ToSessionAsync("foo", null, Arg.Any<CancellationToken>()).Returns(ci => Task.FromResult(session));
+        api.ToSessionAsync("foo", default, default, Arg.Any<CancellationToken>())
+            .Returns(Task.FromResult(sessionResponse));
 
         var result = await AuthenticateAsync(handler, new() { ["X-Session-Token"] = "foo" });
 
@@ -207,6 +244,7 @@ public class KratosAuthenticationHandlerTests
         Assert.Equivalent(
             new[]
             {
+                ("iss", "https://auth.local.lncd.pl"),
                 ("auth_time", "1"),
                 ("iat", "2"),
                 ("exp", "3"),
