@@ -20,7 +20,7 @@ LeanCode CoreLibrary provides 3 main components to integrate with Kratos:
 
 1. [KratosAuthenticationHandler] - converts Kratos cookie into claims.
 2. [KratosWebHookHandlerBase] - provides functionality to handle Kratos webhooks and helps with serialization and deserialization of messages from/to Kratos.
-3. `IServiceCollection` extension methods - which allow to register [KratosAuthenticationHandler] and Kratos `IFrontendApi`, `IIdentityApi` API clients.
+3. `IServiceCollection` extension methods - which allow to register [KratosAuthenticationHandler].
 
 Ory Kratos can be either hosted on [Ory Network](https://www.ory.sh/network/) or be self-hosted.
 
@@ -48,15 +48,11 @@ public override void ConfigureServices(IServiceCollection services)
                 c.Add(new(o.RoleClaimType, "user"));
 
                 if (
-                    s.Identity.VerifiableAddresses.Any(
-                        kvia =>
-                            kvia.Via == "email"
-                            && kvia.Value.EndsWith(
-                                "@leancode.pl",
-                                false,
-                                CultureInfo.InvariantCulture)
-                            && kvia.Verified
-                    )
+                    s.Identity?.VerifiableAddresses?.Any(kvia =>
+                        kvia.Via == KratosVerifiableIdentityAddress.ViaEnum.Email
+                        && kvia.Value.EndsWith("@leancode.pl", false, CultureInfo.InvariantCulture)
+                        && kvia.Verified
+                    ) ?? false
                 )
                 {
                     c.Add(new(o.RoleClaimType, "admin"));
@@ -64,13 +60,23 @@ public override void ConfigureServices(IServiceCollection services)
             };
         });
 
-    services.AddKratosClients(builder =>
+    services.AddKratos(builder =>
     {
-        // Kratos public endpoint
-        builder.AddFrontendApiClient("");
-
-        // Kratos admin endpoint
-        builder.AddIdentityApiClient("");
+        builder.UseProvider<NullTokenProvider, ApiKeyToken>();
+        builder.AddKratosHttpClients(builder: hcb =>
+            _ = hcb.Name switch
+            {
+                nameof(ICourierApi)
+                or nameof(IIdentityApi)
+                    // Kratos admin endpoint
+                    => hcb.ConfigureHttpClient(hc => hc.BaseAddress = new("")),
+                nameof(IFrontendApi)
+                or nameof(IMetadataApi)
+                    // Kratos public endpoint
+                    => hcb.ConfigureHttpClient(hc => hc.BaseAddress = new("")),
+                _ => throw new NotSupportedException($"Unexpected client name: '{hcb.Name}'.")
+            }
+        );
     });
 
     // Api key which will be send by Kratos
