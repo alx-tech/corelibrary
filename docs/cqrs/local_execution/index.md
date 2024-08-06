@@ -41,20 +41,21 @@ public override void ConfigureServices(IServiceCollection services)
 
         // Registers executor for local commands
         .WithLocalCommands(c => c
+            .CQRSTrace()
             .Secure()
             .Validate()
             .TranslateExceptions()
             .CommitTransaction<CoreDbContext>())
 
         // Registers executor for local queries
-        .WithLocalQueries(c => c
-            .Validate()
-            .TranslateExceptions())
+        .WithLocalQueries(q => q
+            .CQRSTrace()
+            .Secure())
 
         // Registers executor for local operations
-        .WithLocalOperations(c => c
+        .WithLocalOperations(o => o
+            .CQRSTrace()
             .Secure()
-            .TranslateExceptions()
             .CommitTransaction<CoreDbContext>());
 }
 ```
