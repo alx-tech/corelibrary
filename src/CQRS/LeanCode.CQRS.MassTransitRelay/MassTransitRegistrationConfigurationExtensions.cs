@@ -30,7 +30,7 @@ public static class MassTransitRegistrationConfigurationExtensions
         Type defaultDefinition
     )
     {
-        var outer = types.Where(MessageTypeCache.HasConsumerInterfaces);
+        var outer = types.Where(RegistrationMetadata.IsConsumer);
         var inner = types.Where((Type x) => x.HasInterface(typeof(IConsumerDefinition<>)));
         var enumerable =
             from c in outer

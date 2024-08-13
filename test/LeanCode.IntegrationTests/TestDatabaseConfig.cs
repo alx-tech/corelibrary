@@ -53,8 +53,7 @@ public class PostgresTestConfig : TestDatabaseConfig
 
     public override void ConfigureDbContext(DbContextOptionsBuilder builder, IConfiguration config)
     {
-        var dataSource = new NpgsqlDataSourceBuilder(config.GetValue<string>("Postgres:ConnectionString")).Build();
-        builder.UseNpgsql(dataSource).AddTimestampTzExpressionInterceptor();
+        builder.UseNpgsql(config.GetValue<string>("Postgres:ConnectionString")).AddTimestampTzExpressionInterceptor();
     }
 
     public override void ConfigureMassTransitOutbox(IEntityFrameworkOutboxConfigurator configurator)
