@@ -50,7 +50,7 @@ All of the libraries that are part of the CoreLib are versioned together and req
 
 ## Supported versions
 
-Here is the list of available major versions of the library (as of 2022-03-25):
+Here is the list of available major versions of the library (as of 2024-08-16):
 
 | CoreLib | .NET Core | Under development | Stable     | Notes             |
 |---------|-----------|-------------------|------------|-------------------|
@@ -63,7 +63,7 @@ Here is the list of available major versions of the library (as of 2022-03-25):
 | v6.1    | 6.0       |                   |            | Unmaintained      |
 | v7.0    | 7.0       |                   | &#x2714;   |                   |
 | v8.0    | 8.0       |                   | &#x2714;   |                   |
-| v8.1    | 8.0       | &#x2714;          |            |                   |
+| v8.1    | 8.0       | &#x2714;          | &#x2714;   |                   |
 
 ## Building & Testing
 
