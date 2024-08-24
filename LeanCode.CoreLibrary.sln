@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
@@ -7,179 +7,179 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7324BABF-C1F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{7AFA22EA-B093-4457-ABA2-CFF96DF41350}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Components", "src\Core\LeanCode.Components\LeanCode.Components.csproj", "{9D56CBAA-44BD-4FEA-AC2F-13A8B49BF832}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Components", "src\Core\LeanCode.Components\LeanCode.Components.csproj", "{9D56CBAA-44BD-4FEA-AC2F-13A8B49BF832}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Components.Startup", "src\Core\LeanCode.Components.Startup\LeanCode.Components.Startup.csproj", "{0FBEB0F0-F6BB-48B7-942D-96B9F3D56A95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Components.Startup", "src\Core\LeanCode.Components.Startup\LeanCode.Components.Startup.csproj", "{0FBEB0F0-F6BB-48B7-942D-96B9F3D56A95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Pipelines.Autofac", "src\Core\LeanCode.Pipelines.Autofac\LeanCode.Pipelines.Autofac.csproj", "{2D41554E-A773-48E7-88FC-9CE386D4CD5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Pipelines.Autofac", "src\Core\LeanCode.Pipelines.Autofac\LeanCode.Pipelines.Autofac.csproj", "{2D41554E-A773-48E7-88FC-9CE386D4CD5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Pipelines", "src\Core\LeanCode.Pipelines\LeanCode.Pipelines.csproj", "{2B41FBAF-0BFD-4BDF-BDA5-AA4590827A85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Pipelines", "src\Core\LeanCode.Pipelines\LeanCode.Pipelines.csproj", "{2B41FBAF-0BFD-4BDF-BDA5-AA4590827A85}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{CEFCB733-AF22-46A6-8CAA-A620D9E90DB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CQRS.Execution", "src\Domain\LeanCode.CQRS.Execution\LeanCode.CQRS.Execution.csproj", "{37390840-8928-488B-B9CD-BC07E65BBC12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CQRS.Execution", "src\Domain\LeanCode.CQRS.Execution\LeanCode.CQRS.Execution.csproj", "{37390840-8928-488B-B9CD-BC07E65BBC12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CQRS.RemoteHttp.Client", "src\Domain\LeanCode.CQRS.RemoteHttp.Client\LeanCode.CQRS.RemoteHttp.Client.csproj", "{2252EE08-B058-4604-9509-122AEA4EC388}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CQRS.RemoteHttp.Client", "src\Domain\LeanCode.CQRS.RemoteHttp.Client\LeanCode.CQRS.RemoteHttp.Client.csproj", "{2252EE08-B058-4604-9509-122AEA4EC388}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CQRS.RemoteHttp.Server", "src\Domain\LeanCode.CQRS.RemoteHttp.Server\LeanCode.CQRS.RemoteHttp.Server.csproj", "{7824CB5F-9107-410D-9D08-E80726C8D9C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CQRS.RemoteHttp.Server", "src\Domain\LeanCode.CQRS.RemoteHttp.Server\LeanCode.CQRS.RemoteHttp.Server.csproj", "{7824CB5F-9107-410D-9D08-E80726C8D9C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CQRS.Security", "src\Domain\LeanCode.CQRS.Security\LeanCode.CQRS.Security.csproj", "{37B5CCFD-17B2-48D7-B42F-84EEF5B3742C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CQRS.Security", "src\Domain\LeanCode.CQRS.Security\LeanCode.CQRS.Security.csproj", "{37B5CCFD-17B2-48D7-B42F-84EEF5B3742C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CQRS.Validation.Fluent", "src\Domain\LeanCode.CQRS.Validation.Fluent\LeanCode.CQRS.Validation.Fluent.csproj", "{007648E7-889D-4691-87AA-C459F8B278B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CQRS.Validation.Fluent", "src\Domain\LeanCode.CQRS.Validation.Fluent\LeanCode.CQRS.Validation.Fluent.csproj", "{007648E7-889D-4691-87AA-C459F8B278B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CQRS.Validation", "src\Domain\LeanCode.CQRS.Validation\LeanCode.CQRS.Validation.csproj", "{5BB9666C-89BC-491F-A334-C5DC6DF230D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CQRS.Validation", "src\Domain\LeanCode.CQRS.Validation\LeanCode.CQRS.Validation.csproj", "{5BB9666C-89BC-491F-A334-C5DC6DF230D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.DomainModels.EF", "src\Domain\LeanCode.DomainModels.EF\LeanCode.DomainModels.EF.csproj", "{C406B7CF-8155-485B-9084-4F7F9F0EB13D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.DomainModels.EF", "src\Domain\LeanCode.DomainModels.EF\LeanCode.DomainModels.EF.csproj", "{C406B7CF-8155-485B-9084-4F7F9F0EB13D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.DomainModels", "src\Domain\LeanCode.DomainModels\LeanCode.DomainModels.csproj", "{6F4D8AF8-CA52-47DC-9476-9792CF605C81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.DomainModels", "src\Domain\LeanCode.DomainModels\LeanCode.DomainModels.csproj", "{6F4D8AF8-CA52-47DC-9476-9792CF605C81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.TimeProvider", "src\Domain\LeanCode.TimeProvider\LeanCode.TimeProvider.csproj", "{097E0674-5AB5-4F14-9455-4579A006F4B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.TimeProvider", "src\Domain\LeanCode.TimeProvider\LeanCode.TimeProvider.csproj", "{097E0674-5AB5-4F14-9455-4579A006F4B9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{E2F50E4D-58C4-4800-B031-D4E27636405E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1358A1B6-E8BB-4607-8B61-FDAE49F0EAA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.ViewRenderer", "src\Infrastructure\LeanCode.ViewRenderer\LeanCode.ViewRenderer.csproj", "{4A739A21-39DF-45D4-AE52-7F91577A5FA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.ViewRenderer", "src\Infrastructure\LeanCode.ViewRenderer\LeanCode.ViewRenderer.csproj", "{4A739A21-39DF-45D4-AE52-7F91577A5FA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.ViewRenderer.Razor", "src\Infrastructure\LeanCode.ViewRenderer.Razor\LeanCode.ViewRenderer.Razor.csproj", "{EB180321-7560-4F46-9717-346275163D1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.ViewRenderer.Razor", "src\Infrastructure\LeanCode.ViewRenderer.Razor\LeanCode.ViewRenderer.Razor.csproj", "{EB180321-7560-4F46-9717-346275163D1B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9DC20510-2DB6-4B63-AAA7-C65A0B8F0157}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{9BCF1002-8885-4598-8E7F-BD491BB5A6B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Pipelines.Tests", "test\Core\LeanCode.Pipelines.Tests\LeanCode.Pipelines.Tests.csproj", "{8B8BD8CD-2B4F-495E-97A8-21128B54DAF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Pipelines.Tests", "test\Core\LeanCode.Pipelines.Tests\LeanCode.Pipelines.Tests.csproj", "{8B8BD8CD-2B4F-495E-97A8-21128B54DAF4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{4931D6C0-FA5C-4CCD-ABB3-06BEF131C4FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CQRS.RemoteHttp.Server.Tests", "test\Domain\LeanCode.CQRS.RemoteHttp.Server.Tests\LeanCode.CQRS.RemoteHttp.Server.Tests.csproj", "{B94A03BB-5818-423A-9AF0-ECC9322C17C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CQRS.RemoteHttp.Server.Tests", "test\Domain\LeanCode.CQRS.RemoteHttp.Server.Tests\LeanCode.CQRS.RemoteHttp.Server.Tests.csproj", "{B94A03BB-5818-423A-9AF0-ECC9322C17C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CQRS.Security.Tests", "test\Domain\LeanCode.CQRS.Security.Tests\LeanCode.CQRS.Security.Tests.csproj", "{E88493F2-5792-4CBC-8CDC-4FCA699B58E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CQRS.Security.Tests", "test\Domain\LeanCode.CQRS.Security.Tests\LeanCode.CQRS.Security.Tests.csproj", "{E88493F2-5792-4CBC-8CDC-4FCA699B58E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CQRS.Validation.Fluent.Tests", "test\Domain\LeanCode.CQRS.Validation.Fluent.Tests\LeanCode.CQRS.Validation.Fluent.Tests.csproj", "{86386C4D-1ECA-4B9A-83D9-55E2F85B5678}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CQRS.Validation.Fluent.Tests", "test\Domain\LeanCode.CQRS.Validation.Fluent.Tests\LeanCode.CQRS.Validation.Fluent.Tests.csproj", "{86386C4D-1ECA-4B9A-83D9-55E2F85B5678}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{D9CFC5C4-8B87-4EDF-85D1-1471EA1B6D27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.ViewRenderer.Razor.Tests", "test\Infrastructure\LeanCode.ViewRenderer.Razor.Tests\LeanCode.ViewRenderer.Razor.Tests.csproj", "{91EDC625-A55B-477C-A56A-2BF81F7AE7C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.ViewRenderer.Razor.Tests", "test\Infrastructure\LeanCode.ViewRenderer.Razor.Tests\LeanCode.ViewRenderer.Razor.Tests.csproj", "{91EDC625-A55B-477C-A56A-2BF81F7AE7C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CQRS.Default", "src\Domain\LeanCode.CQRS.Default\LeanCode.CQRS.Default.csproj", "{355095C7-8278-4A90-903A-11F7211EE2B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CQRS.Default", "src\Domain\LeanCode.CQRS.Default\LeanCode.CQRS.Default.csproj", "{355095C7-8278-4A90-903A-11F7211EE2B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.SmsSender", "src\Infrastructure\LeanCode.SmsSender\LeanCode.SmsSender.csproj", "{126FD82F-3310-419A-A7E6-4A85A807EDC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.SmsSender", "src\Infrastructure\LeanCode.SmsSender\LeanCode.SmsSender.csproj", "{126FD82F-3310-419A-A7E6-4A85A807EDC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.SmsSender.Tests", "test\Infrastructure\LeanCode.SmsSender.Tests\LeanCode.SmsSender.Tests.csproj", "{65E4710A-54C1-4784-83E1-E8D2D2B616EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.SmsSender.Tests", "test\Infrastructure\LeanCode.SmsSender.Tests\LeanCode.SmsSender.Tests.csproj", "{65E4710A-54C1-4784-83E1-E8D2D2B616EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.IdentityServer.KeyVault", "src\Infrastructure\LeanCode.IdentityServer.KeyVault\LeanCode.IdentityServer.KeyVault.csproj", "{0F082F27-FFEA-4C87-84CC-3BE3AB76187D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.IdentityServer.KeyVault", "src\Infrastructure\LeanCode.IdentityServer.KeyVault\LeanCode.IdentityServer.KeyVault.csproj", "{0F082F27-FFEA-4C87-84CC-3BE3AB76187D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.DomainModels.Tests", "test\Domain\LeanCode.DomainModels.Tests\LeanCode.DomainModels.Tests.csproj", "{DA29CF24-FEDC-4893-896C-EB010EB410F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.DomainModels.Tests", "test\Domain\LeanCode.DomainModels.Tests\LeanCode.DomainModels.Tests.csproj", "{DA29CF24-FEDC-4893-896C-EB010EB410F4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{DD0E6BF3-F966-426F-901A-D0140B7FE13C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.IntegrationTestHelpers", "src\Testing\LeanCode.IntegrationTestHelpers\LeanCode.IntegrationTestHelpers.csproj", "{ED6DF5B6-0926-42BF-92BA-DC73F92AA2C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.IntegrationTestHelpers", "src\Testing\LeanCode.IntegrationTestHelpers\LeanCode.IntegrationTestHelpers.csproj", "{ED6DF5B6-0926-42BF-92BA-DC73F92AA2C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.DomainModels.EventsExecution.TestHelpers.Tests", "test\Domain\LeanCode.DomainModels.EventsExecution.TestHelpers.Tests\LeanCode.DomainModels.EventsExecution.TestHelpers.Tests.csproj", "{68FFF97B-AD2A-4EF4-B4A3-37A0F77B7272}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.DomainModels.EventsExecution.TestHelpers.Tests", "test\Domain\LeanCode.DomainModels.EventsExecution.TestHelpers.Tests\LeanCode.DomainModels.EventsExecution.TestHelpers.Tests.csproj", "{68FFF97B-AD2A-4EF4-B4A3-37A0F77B7272}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.ClientCredentialsHandler", "src\Infrastructure\LeanCode.ClientCredentialsHandler\LeanCode.ClientCredentialsHandler.csproj", "{3A47E0C3-3101-47C4-A545-553C906C5704}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.ClientCredentialsHandler", "src\Infrastructure\LeanCode.ClientCredentialsHandler\LeanCode.ClientCredentialsHandler.csproj", "{3A47E0C3-3101-47C4-A545-553C906C5704}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Mixpanel", "src\Infrastructure\LeanCode.Mixpanel\LeanCode.Mixpanel.csproj", "{E4AFB184-BC22-4604-9835-EAE653E3E43A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Mixpanel", "src\Infrastructure\LeanCode.Mixpanel\LeanCode.Mixpanel.csproj", "{E4AFB184-BC22-4604-9835-EAE653E3E43A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.TimeProvider.Tests", "test\Domain\LeanCode.TimeProvider.Tests\LeanCode.TimeProvider.Tests.csproj", "{E8421F04-D501-4301-B621-2F6B2A422928}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.TimeProvider.Tests", "test\Domain\LeanCode.TimeProvider.Tests\LeanCode.TimeProvider.Tests.csproj", "{E8421F04-D501-4301-B621-2F6B2A422928}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CQRS.Tests", "test\Domain\LeanCode.CQRS.Tests\LeanCode.CQRS.Tests.csproj", "{B5B4FDF9-EC7D-4A2B-AA43-2D82A7C462E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CQRS.Tests", "test\Domain\LeanCode.CQRS.Tests\LeanCode.CQRS.Tests.csproj", "{B5B4FDF9-EC7D-4A2B-AA43-2D82A7C462E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.UrlHelper", "src\Helpers\LeanCode.UrlHelper\LeanCode.UrlHelper.csproj", "{B8F0ADF5-EF62-437A-9C9C-FF80C358A992}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.UrlHelper", "src\Helpers\LeanCode.UrlHelper\LeanCode.UrlHelper.csproj", "{B8F0ADF5-EF62-437A-9C9C-FF80C358A992}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Dapper", "src\Infrastructure\LeanCode.Dapper\LeanCode.Dapper.csproj", "{4953BB6C-9999-4113-B1F1-86FFF24D87E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Dapper", "src\Infrastructure\LeanCode.Dapper\LeanCode.Dapper.csproj", "{4953BB6C-9999-4113-B1F1-86FFF24D87E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Test.Helpers", "test\LeanCode.Test.Helpers\LeanCode.Test.Helpers.csproj", "{7ECA4420-95FF-41D2-BB3F-5F2CB0A77F9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Test.Helpers", "test\LeanCode.Test.Helpers\LeanCode.Test.Helpers.csproj", "{7ECA4420-95FF-41D2-BB3F-5F2CB0A77F9E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{E8EB0677-F9F2-4279-959D-F12128C4B034}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CodeAnalysis", "src\Tools\LeanCode.CodeAnalysis\LeanCode.CodeAnalysis.csproj", "{00B763AC-CA9E-432E-81B0-C59F32D69B6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CodeAnalysis", "src\Tools\LeanCode.CodeAnalysis\LeanCode.CodeAnalysis.csproj", "{00B763AC-CA9E-432E-81B0-C59F32D69B6C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{56729F15-287B-4BFD-8A3E-3EBB87BA89B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CodeAnalysis.Tests", "test\Tools\LeanCode.CodeAnalysis.Tests\LeanCode.CodeAnalysis.Tests.csproj", "{1765E840-E237-417C-AB00-BEEF36B33E0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CodeAnalysis.Tests", "test\Tools\LeanCode.CodeAnalysis.Tests\LeanCode.CodeAnalysis.Tests.csproj", "{1765E840-E237-417C-AB00-BEEF36B33E0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.EFMigrator", "src\Infrastructure\LeanCode.EFMigrator\LeanCode.EFMigrator.csproj", "{8158CFFC-BD6C-410E-96EF-1D4B03E62967}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.EFMigrator", "src\Infrastructure\LeanCode.EFMigrator\LeanCode.EFMigrator.csproj", "{8158CFFC-BD6C-410E-96EF-1D4B03E62967}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Tests", "test\LeanCode.Tests.csproj", "{71BBAC5B-B76E-4798-BAED-13E4FC9C606B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Tests", "test\LeanCode.Tests.csproj", "{71BBAC5B-B76E-4798-BAED-13E4FC9C606B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.DomainModels.EF.Tests", "test\Domain\LeanCode.DomainModels.EF.Tests\LeanCode.DomainModels.EF.Tests.csproj", "{0CE7BC83-4F69-4F7E-A5A9-1192B9F721A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.DomainModels.EF.Tests", "test\Domain\LeanCode.DomainModels.EF.Tests\LeanCode.DomainModels.EF.Tests.csproj", "{0CE7BC83-4F69-4F7E-A5A9-1192B9F721A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Logging", "src\Infrastructure\LeanCode.Logging\LeanCode.Logging.csproj", "{3780AD24-65CC-47B9-89AE-5C82887D318A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Logging", "src\Infrastructure\LeanCode.Logging\LeanCode.Logging.csproj", "{3780AD24-65CC-47B9-89AE-5C82887D318A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Logging.Tests", "test\Infrastructure\LeanCode.Logging.Tests\LeanCode.Logging.Tests.csproj", "{79D21088-1A02-4079-8670-2F5A6DE3FDAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Logging.Tests", "test\Infrastructure\LeanCode.Logging.Tests\LeanCode.Logging.Tests.csproj", "{79D21088-1A02-4079-8670-2F5A6DE3FDAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Localization", "src\Infrastructure\LeanCode.Localization\LeanCode.Localization.csproj", "{F72DF068-E57C-4844-A40A-8436F2387D2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Localization", "src\Infrastructure\LeanCode.Localization\LeanCode.Localization.csproj", "{F72DF068-E57C-4844-A40A-8436F2387D2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Firebase.Firestore", "src\Infrastructure\LeanCode.Firebase.Firestore\LeanCode.Firebase.Firestore.csproj", "{3302D3B4-9F3B-44B5-83CA-FAC782BF5E05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Firebase.Firestore", "src\Infrastructure\LeanCode.Firebase.Firestore\LeanCode.Firebase.Firestore.csproj", "{3302D3B4-9F3B-44B5-83CA-FAC782BF5E05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Localization.Tests", "test\Infrastructure\LeanCode.Localization.Tests\LeanCode.Localization.Tests.csproj", "{2329CC11-BB1C-4DC4-9BD9-9DA36B26DB31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Localization.Tests", "test\Infrastructure\LeanCode.Localization.Tests\LeanCode.Localization.Tests.csproj", "{2329CC11-BB1C-4DC4-9BD9-9DA36B26DB31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Serialization", "src\Infrastructure\LeanCode.Serialization\LeanCode.Serialization.csproj", "{4D2928CA-0803-4230-B33C-005443E99FCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Serialization", "src\Infrastructure\LeanCode.Serialization\LeanCode.Serialization.csproj", "{4D2928CA-0803-4230-B33C-005443E99FCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Serialization.Tests", "test\Infrastructure\LeanCode.Serialization.Tests\LeanCode.Serialization.Tests.csproj", "{782C86E1-41EB-43FA-A74C-7B77049EC9C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Serialization.Tests", "test\Infrastructure\LeanCode.Serialization.Tests\LeanCode.Serialization.Tests.csproj", "{782C86E1-41EB-43FA-A74C-7B77049EC9C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CQRS.RemoteHttp.Client.Tests", "test\Domain\LeanCode.CQRS.RemoteHttp.Client.Tests\LeanCode.CQRS.RemoteHttp.Client.Tests.csproj", "{E6A79F5B-8A30-4496-8F70-871C43AF91D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CQRS.RemoteHttp.Client.Tests", "test\Domain\LeanCode.CQRS.RemoteHttp.Client.Tests\LeanCode.CQRS.RemoteHttp.Client.Tests.csproj", "{E6A79F5B-8A30-4496-8F70-871C43AF91D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.DomainModels.MassTransitRelay", "src\Domain\LeanCode.DomainModels.MassTransitRelay\LeanCode.DomainModels.MassTransitRelay.csproj", "{4E6FB2E6-FC2C-4814-BA80-0C917516896F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.DomainModels.MassTransitRelay", "src\Domain\LeanCode.DomainModels.MassTransitRelay\LeanCode.DomainModels.MassTransitRelay.csproj", "{4E6FB2E6-FC2C-4814-BA80-0C917516896F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.DomainModels.MassTransitRelay.Tests", "test\Domain\LeanCode.DomainModels.MassTransitRelay.Tests\LeanCode.DomainModels.MassTransitRelay.Tests.csproj", "{80A33FE3-868B-49DE-9C78-E353204C3B2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.DomainModels.MassTransitRelay.Tests", "test\Domain\LeanCode.DomainModels.MassTransitRelay.Tests\LeanCode.DomainModels.MassTransitRelay.Tests.csproj", "{80A33FE3-868B-49DE-9C78-E353204C3B2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.SendGrid", "src\Infrastructure\LeanCode.SendGrid\LeanCode.SendGrid.csproj", "{57BFC47F-7010-4FDB-92A8-5FF73D136F14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.SendGrid", "src\Infrastructure\LeanCode.SendGrid\LeanCode.SendGrid.csproj", "{57BFC47F-7010-4FDB-92A8-5FF73D136F14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.SendGrid.Tests", "test\Infrastructure\LeanCode.SendGrid.Tests\LeanCode.SendGrid.Tests.csproj", "{086FD270-5BCD-4361-8625-76BB79B2F9D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.SendGrid.Tests", "test\Infrastructure\LeanCode.SendGrid.Tests\LeanCode.SendGrid.Tests.csproj", "{086FD270-5BCD-4361-8625-76BB79B2F9D3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "benchmarks", "benchmarks", "{74FB63D0-E98B-4812-92E7-C764B8413DBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Benchmarks", "benchmarks\LeanCode.Benchmarks\LeanCode.Benchmarks.csproj", "{ADF1897D-5541-4B90-86A8-290D1D86D197}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Benchmarks", "benchmarks\LeanCode.Benchmarks\LeanCode.Benchmarks.csproj", "{ADF1897D-5541-4B90-86A8-290D1D86D197}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Firebase.FCM", "src\Infrastructure\LeanCode.Firebase.FCM\LeanCode.Firebase.FCM.csproj", "{4D4BDD1D-394B-425E-B417-DED42C3839D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Firebase.FCM", "src\Infrastructure\LeanCode.Firebase.FCM\LeanCode.Firebase.FCM.csproj", "{4D4BDD1D-394B-425E-B417-DED42C3839D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Firebase.FCM.Tests", "test\Infrastructure\LeanCode.Firebase.FCM.Tests\LeanCode.Firebase.FCM.Tests.csproj", "{AF1DA2CE-A84A-4036-A4CC-7A2EACBB1EDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Firebase.FCM.Tests", "test\Infrastructure\LeanCode.Firebase.FCM.Tests\LeanCode.Firebase.FCM.Tests.csproj", "{AF1DA2CE-A84A-4036-A4CC-7A2EACBB1EDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Firebase", "src\Infrastructure\LeanCode.Firebase\LeanCode.Firebase.csproj", "{1DA57F24-BB1F-4D11-AA55-29E1690D62B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Firebase", "src\Infrastructure\LeanCode.Firebase\LeanCode.Firebase.csproj", "{1DA57F24-BB1F-4D11-AA55-29E1690D62B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Mixpanel.Tests", "test\Infrastructure\LeanCode.Mixpanel.Tests\LeanCode.Mixpanel.Tests.csproj", "{8CAF78BE-85DB-4858-8784-9426801B9218}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Mixpanel.Tests", "test\Infrastructure\LeanCode.Mixpanel.Tests\LeanCode.Mixpanel.Tests.csproj", "{8CAF78BE-85DB-4858-8784-9426801B9218}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.PeriodicService", "src\Infrastructure\LeanCode.PeriodicService\LeanCode.PeriodicService.csproj", "{6F6C1ECA-9F94-4027-B9D6-684C22E23040}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.PeriodicService", "src\Infrastructure\LeanCode.PeriodicService\LeanCode.PeriodicService.csproj", "{6F6C1ECA-9F94-4027-B9D6-684C22E23040}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.PdfRocket", "src\Infrastructure\LeanCode.PdfRocket\LeanCode.PdfRocket.csproj", "{68A3FF72-B4A5-4362-9D11-0B72A4E8E262}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.PdfRocket", "src\Infrastructure\LeanCode.PdfRocket\LeanCode.PdfRocket.csproj", "{68A3FF72-B4A5-4362-9D11-0B72A4E8E262}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.PdfRocket.Tests", "test\Infrastructure\LeanCode.PdfRocket\LeanCode.PdfRocket.Tests.csproj", "{82E33741-8F43-46E0-99BB-02396C4B3E75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.PdfRocket.Tests", "test\Infrastructure\LeanCode.PdfRocket\LeanCode.PdfRocket.Tests.csproj", "{82E33741-8F43-46E0-99BB-02396C4B3E75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.DomainModels.EventsExecution.TestHelpers", "src\Testing\LeanCode.DomainModels.EventsExecution.TestHelpers\LeanCode.DomainModels.EventsExecution.TestHelpers.csproj", "{CFB7E5C4-C23B-459A-B7EF-C54D0BFAA1FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.DomainModels.EventsExecution.TestHelpers", "src\Testing\LeanCode.DomainModels.EventsExecution.TestHelpers\LeanCode.DomainModels.EventsExecution.TestHelpers.csproj", "{CFB7E5C4-C23B-459A-B7EF-C54D0BFAA1FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.ExternalIdentityProviders", "src\Infrastructure\LeanCode.ExternalIdentityProviders\LeanCode.ExternalIdentityProviders.csproj", "{2882332E-5F29-4AFF-8FCD-BD701F1F61E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.ExternalIdentityProviders", "src\Infrastructure\LeanCode.ExternalIdentityProviders\LeanCode.ExternalIdentityProviders.csproj", "{2882332E-5F29-4AFF-8FCD-BD701F1F61E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.IntegrationTests", "test\LeanCode.IntegrationTests\LeanCode.IntegrationTests.csproj", "{0C787E5B-E8AA-4451-A652-A3E8B852CE34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.IntegrationTests", "test\LeanCode.IntegrationTests\LeanCode.IntegrationTests.csproj", "{0C787E5B-E8AA-4451-A652-A3E8B852CE34}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{92856887-87D8-4B67-8406-29624FC0AC6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.IntegrationTestHelpers.Tests", "test\Testing\LeanCode.IntegrationTestHelpers.Tests\LeanCode.IntegrationTestHelpers.Tests.csproj", "{14AC3CBA-B8AC-4820-BF6D-C0FE295DF15D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.IntegrationTestHelpers.Tests", "test\Testing\LeanCode.IntegrationTestHelpers.Tests\LeanCode.IntegrationTestHelpers.Tests.csproj", "{14AC3CBA-B8AC-4820-BF6D-C0FE295DF15D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.ExternalIdentityProviders.Tests", "test\Infrastructure\LeanCode.ExternalIdentityProviders.Tests\LeanCode.ExternalIdentityProviders.Tests.csproj", "{EFA1FDFD-4A08-4418-8D80-7481A0EB5B2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.ExternalIdentityProviders.Tests", "test\Infrastructure\LeanCode.ExternalIdentityProviders.Tests\LeanCode.ExternalIdentityProviders.Tests.csproj", "{EFA1FDFD-4A08-4418-8D80-7481A0EB5B2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.OpenTelemetry", "src\Infrastructure\LeanCode.OpenTelemetry\LeanCode.OpenTelemetry.csproj", "{699B7316-9635-4AFA-8ED6-0BEA949AD8E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.OpenTelemetry", "src\Infrastructure\LeanCode.OpenTelemetry\LeanCode.OpenTelemetry.csproj", "{699B7316-9635-4AFA-8ED6-0BEA949AD8E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Components.Startup.Tests", "test\Core\LeanCode.Components.Startup.Tests\LeanCode.Components.Startup.Tests.csproj", "{0E5786B1-DCA4-441D-8165-C884E62D7AB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Components.Startup.Tests", "test\Core\LeanCode.Components.Startup.Tests\LeanCode.Components.Startup.Tests.csproj", "{0E5786B1-DCA4-441D-8165-C884E62D7AB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.AzureIdentity", "src\Infrastructure\LeanCode.AzureIdentity\LeanCode.AzureIdentity.csproj", "{0E3A75B7-8064-4288-836E-CD695177633D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.AzureIdentity", "src\Infrastructure\LeanCode.AzureIdentity\LeanCode.AzureIdentity.csproj", "{0E3A75B7-8064-4288-836E-CD695177633D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.AzureIdentity.Tests", "test\Infrastructure\LeanCode.AzureIdentity.Tests\LeanCode.AzureIdentity.Tests.csproj", "{BA83956A-6867-4E63-9417-C227F477981B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.AzureIdentity.Tests", "test\Infrastructure\LeanCode.AzureIdentity.Tests\LeanCode.AzureIdentity.Tests.csproj", "{BA83956A-6867-4E63-9417-C227F477981B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Dapper.Tests", "test\Infrastructure\LeanCode.Dapper.Tests\LeanCode.Dapper.Tests.csproj", "{8DF10985-C8B8-4F30-ACD4-3A1110D53550}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Dapper.Tests", "test\Infrastructure\LeanCode.Dapper.Tests\LeanCode.Dapper.Tests.csproj", "{8DF10985-C8B8-4F30-ACD4-3A1110D53550}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Firebase.FCM.SqlServer", "src\Infrastructure\LeanCode.Firebase.FCM.SqlServer\LeanCode.Firebase.FCM.SqlServer.csproj", "{81E09F81-9043-46FF-BB83-870EA2FF1A55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Firebase.FCM.SqlServer", "src\Infrastructure\LeanCode.Firebase.FCM.SqlServer\LeanCode.Firebase.FCM.SqlServer.csproj", "{81E09F81-9043-46FF-BB83-870EA2FF1A55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.Firebase.FCM.PostgreSql", "src\Infrastructure\LeanCode.Firebase.FCM.PostgreSql\LeanCode.Firebase.FCM.PostgreSql.csproj", "{32F38A16-CAF9-4836-8D28-EA9AD5B2FDE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.Firebase.FCM.PostgreSql", "src\Infrastructure\LeanCode.Firebase.FCM.PostgreSql\LeanCode.Firebase.FCM.PostgreSql.csproj", "{32F38A16-CAF9-4836-8D28-EA9AD5B2FDE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.StyleCop", "src\Tools\LeanCode.StyleCop\LeanCode.StyleCop.csproj", "{2E0CDEC9-09E6-4F77-9965-57F16DE50437}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.StyleCop", "src\Tools\LeanCode.StyleCop\LeanCode.StyleCop.csproj", "{2E0CDEC9-09E6-4F77-9965-57F16DE50437}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.DomainModels.Generators", "src\Domain\LeanCode.DomainModels.Generators\LeanCode.DomainModels.Generators.csproj", "{87B08E27-3BA3-45FC-BB9F-FA0DC6B5DCFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.DomainModels.Generators", "src\Domain\LeanCode.DomainModels.Generators\LeanCode.DomainModels.Generators.csproj", "{87B08E27-3BA3-45FC-BB9F-FA0DC6B5DCFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CQRS.Validation.Fluent.Scoped", "src\Domain\LeanCode.CQRS.Validation.Fluent.Scoped\LeanCode.CQRS.Validation.Fluent.Scoped.csproj", "{70CEF788-34A6-4172-98DE-6E66B297B0B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CQRS.Validation.Fluent.Scoped", "src\Domain\LeanCode.CQRS.Validation.Fluent.Scoped\LeanCode.CQRS.Validation.Fluent.Scoped.csproj", "{70CEF788-34A6-4172-98DE-6E66B297B0B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeanCode.CQRS.Validation.Fluent.Scoped.Tests", "test\Domain\LeanCode.CQRS.Validation.Fluent.Scoped.Tests\LeanCode.CQRS.Validation.Fluent.Scoped.Tests.csproj", "{B364F82B-5A61-4C86-B365-CA6BB6ADD556}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeanCode.CQRS.Validation.Fluent.Scoped.Tests", "test\Domain\LeanCode.CQRS.Validation.Fluent.Scoped.Tests\LeanCode.CQRS.Validation.Fluent.Scoped.Tests.csproj", "{B364F82B-5A61-4C86-B365-CA6BB6ADD556}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

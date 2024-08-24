@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Sendgrid" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="../LeanCode.Localization/LeanCode.Localization.csproj" />
     <ProjectReference Include="../LeanCode.ViewRenderer/LeanCode.ViewRenderer.csproj" />
   </ItemGroup>
-
 </Project>

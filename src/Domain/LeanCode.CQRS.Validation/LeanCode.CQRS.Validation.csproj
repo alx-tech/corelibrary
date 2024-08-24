@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../../Core/LeanCode.Pipelines/LeanCode.Pipelines.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="LeanCode.Contracts" />
     <PackageReference Include="Serilog" />
   </ItemGroup>
-
 </Project>

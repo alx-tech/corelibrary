@@ -1,14 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <NoPackageAnalysis>true</NoPackageAnalysis>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" PrivateAssets="None"  Version="1.2.0-beta.435" />
+    <PackageReference Include="StyleCop.Analyzers" PrivateAssets="None" Version="1.2.0-beta.435" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="stylecop.json" Pack="true" PackagePath="build" />
   </ItemGroup>

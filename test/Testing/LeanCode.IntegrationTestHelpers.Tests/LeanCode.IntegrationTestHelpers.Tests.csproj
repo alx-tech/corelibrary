@@ -1,34 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <UsingTask
-    TaskName="SetEnv"
-    TaskFactory="RoslynCodeTaskFactory"
-    AssemblyFile="$(MSBuildToolsPath)/Microsoft.Build.Tasks.Core.dll">
-
+  <UsingTask TaskName="SetEnv" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)/Microsoft.Build.Tasks.Core.dll">
     <ParameterGroup>
       <Name ParameterType="System.String" Required="true" />
       <Value ParameterType="System.String" Required="true" />
     </ParameterGroup>
-
     <Task>
       <Using Namespace="System" />
-      <Code Type="Fragment" Language="cs">
-        <![CDATA[
+      <Code Type="Fragment" Language="cs"><![CDATA[
           Environment.SetEnvironmentVariable(Name, Value);
-        ]]>
-      </Code>
+        ]]></Code>
     </Task>
-
   </UsingTask>
-
   <Target Name="SetContentRoot" BeforeTargets="VSTest">
     <SetEnv Name="ASPNETCORE_TEST_CONTENTROOT_LEANCODE_INTEGRATIONTESTHELPERS_TESTS" Value="$(MSBuildThisFileDirectory)" />
   </Target>
-
   <PropertyGroup>
     <Nullable>enable</Nullable>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="../../../src/Core/LeanCode.Components.Startup/LeanCode.Components.Startup.csproj" />
     <ProjectReference Include="../../../src/Core/LeanCode.Components/LeanCode.Components.csproj" />
@@ -39,14 +28,10 @@
     <ProjectReference Include="../../../src/Domain/LeanCode.TimeProvider/LeanCode.TimeProvider.csproj" />
     <ProjectReference Include="../../../src/Testing/LeanCode.IntegrationTestHelpers/LeanCode.IntegrationTestHelpers.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-
     <PackageReference Include="LeanCode.Contracts" />
-
     <PackageReference Include="Microsoft.EntityFrameworkCore" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
   </ItemGroup>
-
 </Project>
