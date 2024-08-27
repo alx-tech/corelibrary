@@ -161,6 +161,13 @@ jobs:
           release_name: ${{ format('Release v{0}', needs.prepare.outputs.version) }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          source-url: https://nuget.pkg.github.com/alx-tech/index.json
+          dotnet-version: '7.0.x'
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Push to NuGet
         if: ${{ needs.prepare.outputs.publish_nuget == '1' }}
         run: |
