@@ -10,8 +10,6 @@ but this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 * Remove Cache abstractions
 * Remove `LeanCode.AsyncTasks` and Hangfire-based implementation
 * `FindAndEnsureExistsAsync` now throws `EntityDoesNotExistException`
-* Remove `AddAsync`, `UpdateAsync`, `DeleteAsync` and `DeleteRangeAsync` from `EFRepository` and `IRepository`
-* Remove `IRepository<T>`
 * Change `EFRepository.Update` so that it does not call `dbContext.Update` anymore
 * Rework `FixedTimeProvider` so that if it doesn't find a date in asynchronous local storage it will return the current now instead of zero date
 * Add middleware to log query's and operation's responses

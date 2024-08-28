@@ -3,59 +3,101 @@ using LeanCode.DomainModels.Model;
 using LeanCode.Time;
 using Microsoft.EntityFrameworkCore;
 
-namespace LeanCode.DomainModels.EF;
-
-public abstract class EFRepository<TEntity, TIdentity, TContext> : IRepository<TEntity, TIdentity>
-    where TEntity : class, IAggregateRootWithoutOptimisticConcurrency<TIdentity>
-    where TIdentity : notnull
-    where TContext : notnull, DbContext
+namespace LeanCode.DomainModels.EF
 {
-    protected TContext DbContext { get; }
-    protected DbSet<TEntity> DbSet { get; }
-
-    protected EFRepository(TContext dbContext)
+    public abstract class EFRepository<TEntity, TIdentity, TContext> : IRepository<TEntity, TIdentity>
+        where TEntity : class, IAggregateRootWithoutOptimisticConcurrency<TIdentity>
+        where TIdentity : notnull
+        where TContext : notnull, DbContext
     {
-        DbContext = dbContext;
-        DbSet = dbContext.Set<TEntity>();
-    }
+        protected TContext DbContext { get; }
+        protected DbSet<TEntity> DbSet { get; }
 
-    public virtual void Add(TEntity entity)
-    {
-        if (entity is IOptimisticConcurrency oc)
+        protected EFRepository(TContext dbContext)
         {
-            oc.DateModified = TimeProvider.Now;
+            DbContext = dbContext;
+            DbSet = dbContext.Set<TEntity>();
         }
 
-        DbSet.Add(entity);
-    }
-
-    public virtual void Delete(TEntity entity)
-    {
-        if (entity is IOptimisticConcurrency oc)
+        public virtual void Add(TEntity entity)
         {
-            oc.DateModified = TimeProvider.Now;
+            if (entity is IOptimisticConcurrency oc)
+            {
+                oc.DateModified = TimeProvider.Now;
+            }
+
+            DbSet.Add(entity);
         }
 
-        DbSet.Remove(entity);
-    }
-
-    public virtual void DeleteRange(IEnumerable<TEntity> entities)
-    {
-        foreach (var oc in entities.OfType<IOptimisticConcurrency>())
+        public virtual void Delete(TEntity entity)
         {
-            oc.DateModified = TimeProvider.Now;
+            if (entity is IOptimisticConcurrency oc)
+            {
+                oc.DateModified = TimeProvider.Now;
+            }
+
+            DbSet.Remove(entity);
         }
 
-        DbSet.RemoveRange(entities);
-    }
-
-    public virtual void Update(TEntity entity)
-    {
-        if (entity is IOptimisticConcurrency oc)
+        public virtual void DeleteRange(IEnumerable<TEntity> entities)
         {
-            oc.DateModified = TimeProvider.Now;
+            foreach (var oc in entities.OfType<IOptimisticConcurrency>())
+            {
+                oc.DateModified = TimeProvider.Now;
+            }
+
+            DbSet.RemoveRange(entities);
         }
+
+        public virtual void Update(TEntity entity)
+        {
+            if (entity is IOptimisticConcurrency oc)
+            {
+                oc.DateModified = TimeProvider.Now;
+            }
+
+            DbSet.Update(entity);
+        }
+
+        // NOTE: this may update more than just this one aggregate
+        // if there are other objects tracked by EF change tracker
+        public virtual Task AddAsync(TEntity entity, CancellationToken cancellationToken = default)
+        {
+            Add(entity);
+            return SaveChangesAsync(cancellationToken);
+        }
+
+        public virtual Task DeleteAsync(TEntity entity, CancellationToken cancellationToken = default)
+        {
+            Delete(entity);
+            return SaveChangesAsync(cancellationToken);
+        }
+
+        public virtual Task DeleteRangeAsync(IEnumerable<TEntity> entity, CancellationToken cancellationToken = default)
+        {
+            DeleteRange(entity);
+            return SaveChangesAsync(cancellationToken);
+        }
+
+        public virtual Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
+        {
+            Update(entity);
+            return SaveChangesAsync(cancellationToken);
+        }
+
+        public abstract Task<TEntity?> FindAsync(TIdentity id, CancellationToken cancellationToken = default);
+
+        protected Task SaveChangesAsync(CancellationToken cancellationToken = default) =>
+            DbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public abstract Task<TEntity?> FindAsync(TIdentity id, CancellationToken cancellationToken = default);
+    public abstract class EFRepository<TEntity, TContext>
+        : EFRepository<TEntity, Id<TEntity>, TContext>,
+            IRepository<TEntity>
+        where TEntity : class, IAggregateRootWithoutOptimisticConcurrency<Id<TEntity>>
+        where TContext : notnull, DbContext
+    {
+        protected EFRepository(TContext dbContext)
+            : base(dbContext) { }
+    }
 }
