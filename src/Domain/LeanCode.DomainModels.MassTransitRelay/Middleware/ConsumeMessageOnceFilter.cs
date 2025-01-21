@@ -27,8 +27,8 @@ public class ConsumeMessageOnceFilter<TConsumer, TMessage> : IFilter<ConsumerCon
         var msg = ConsumedMessage.Create(context);
 
         if (
-            await consumedMessages.ConsumedMessages
-                .Where(m => m.ConsumerType == msg.ConsumerType && m.MessageId == msg.MessageId)
+            await consumedMessages
+                .ConsumedMessages.Where(m => m.ConsumerType == msg.ConsumerType && m.MessageId == msg.MessageId)
                 .AnyAsync()
         )
         {

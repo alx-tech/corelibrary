@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-
 using CacheDictionary = System.Collections.Concurrent.ConcurrentDictionary<
     System.Type,
     (System.Type HandlerType, System.Reflection.ConstructorInfo Constructor)

@@ -145,7 +145,7 @@ public sealed class ConsumedMessagesFilterTests : IAsyncLifetime, IDisposable
         Assert.Equal(messageId, msg.MessageId);
     }
 
-    public async Task InitializeAsync()
+    public async ValueTask InitializeAsync()
     {
         // harness started at test level because
         // we need to have different consumers in each test
@@ -156,7 +156,7 @@ public sealed class ConsumedMessagesFilterTests : IAsyncLifetime, IDisposable
         await dbContext.Database.EnsureCreatedAsync();
     }
 
-    public async Task DisposeAsync()
+    public async ValueTask DisposeAsync()
     {
         await harness.Stop();
         await dbConnection.CloseAsync();

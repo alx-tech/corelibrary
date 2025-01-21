@@ -41,7 +41,7 @@ public class Tests : IAsyncLifetime
         Assert.Equal("test", res);
     }
 
-    public async Task InitializeAsync()
+    public async ValueTask InitializeAsync()
     {
         await app.InitializeAsync();
 
@@ -49,5 +49,5 @@ public class Tests : IAsyncLifetime
         command = app.CreateCommandsExecutor();
     }
 
-    public Task DisposeAsync() => app.DisposeAsync().AsTask();
+    public ValueTask DisposeAsync() => app.DisposeAsync();
 }

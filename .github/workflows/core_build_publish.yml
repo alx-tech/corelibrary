@@ -79,7 +79,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: "7.0.100"
+          dotnet-version: "8.0.401"
       - name: Restore
         run: dotnet restore
       - name: Tool Restore
@@ -117,7 +117,7 @@ jobs:
 
       - name: Upload Test Results
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Unit Test Results
           path: test/TestResults/*.xml
@@ -165,7 +165,7 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           source-url: https://nuget.pkg.github.com/alx-tech/index.json
-          dotnet-version: '7.0.x'
+          dotnet-version: '8.0.x'
         env:
           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Push to NuGet

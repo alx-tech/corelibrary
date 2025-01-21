@@ -17,8 +17,8 @@ public class LoggingResponsesTests
         var appCtx = new AppContext();
         var fakeSink = new FakeSink();
 
-        var logger = new LoggerConfiguration().MinimumLevel
-            .Is(LogEventLevel.Verbose)
+        var logger = new LoggerConfiguration()
+            .MinimumLevel.Is(LogEventLevel.Verbose)
             .WriteTo.Sink(fakeSink, LogEventLevel.Verbose)
             .CreateLogger();
 
@@ -50,8 +50,8 @@ public class LoggingResponsesTests
 
         IHostEnvironment env = new HostingEnvironment { EnvironmentName = Environments.Development };
 
-        var logger = new LoggerConfiguration().MinimumLevel
-            .Is(LogEventLevel.Verbose)
+        var logger = new LoggerConfiguration()
+            .MinimumLevel.Is(LogEventLevel.Verbose)
             .WriteTo.Sink(fakeSink, LogEventLevel.Verbose)
             .CreateLogger();
 
@@ -85,8 +85,8 @@ public class LoggingResponsesTests
 
         IHostEnvironment env = new HostingEnvironment { EnvironmentName = Environments.Production };
 
-        var logger = new LoggerConfiguration().MinimumLevel
-            .Is(LogEventLevel.Verbose)
+        var logger = new LoggerConfiguration()
+            .MinimumLevel.Is(LogEventLevel.Verbose)
             .WriteTo.Sink(fakeSink, LogEventLevel.Verbose)
             .CreateLogger();
 

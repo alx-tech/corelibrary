@@ -7,6 +7,7 @@ using MassTransit;
 using MassTransit.Testing.Implementations;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
+using Xunit.Internal;
 
 namespace LeanCode.DomainModels.MassTransitRelay.Tests;
 
@@ -70,9 +71,9 @@ public class ScopedFiltersTests : IAsyncLifetime
         Assert.NotEqual(f11, f21);
     }
 
-    public Task InitializeAsync() => bus.StartAsync();
+    public async ValueTask InitializeAsync() => await bus.StartAsync();
 
-    public Task DisposeAsync() => bus.StopAsync();
+    public async ValueTask DisposeAsync() => await bus.StopAsync();
 
     private sealed class MassTransitModule : MassTransitRelayModule
     {

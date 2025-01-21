@@ -18,7 +18,7 @@ public abstract class DbTestBase : IAsyncLifetime, IDisposable
         DbContext = TestDbContext.Create(dbConnection);
     }
 
-    public async Task InitializeAsync()
+    public async ValueTask InitializeAsync()
     {
         // harness started at test level because
         // we need to have different consumers in each test
@@ -28,7 +28,7 @@ public abstract class DbTestBase : IAsyncLifetime, IDisposable
         await DbContext.Database.EnsureCreatedAsync();
     }
 
-    public async Task DisposeAsync()
+    public async ValueTask DisposeAsync()
     {
         await dbConnection.CloseAsync();
         await dbConnection.DisposeAsync();

@@ -113,13 +113,13 @@ public class MSSQLPushNotificationTokenStoreTests : IAsyncLifetime
         Assert.Empty(result2);
     }
 
-    public async Task InitializeAsync()
+    public async ValueTask InitializeAsync()
     {
         context = await SqliteTestDbContext.CreateInMemory();
         store = new MsSqlPushNotificationTokenStore<SqliteTestDbContext>(context);
     }
 
-    public async Task DisposeAsync()
+    public async ValueTask DisposeAsync()
     {
         await context.DisposeAsync();
     }

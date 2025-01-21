@@ -56,8 +56,8 @@ public class ApiModule : AppModule
                 cfg.TokenValidationParameters.RoleClaimType = "role";
             });
 
-        services.AddDbContext<TestDbContext>(
-            cfg => cfg.UseSqlServer(config.GetValue<string>(ConfigurationOverrides.ConnectionStringKeyDefault))
+        services.AddDbContext<TestDbContext>(cfg =>
+            cfg.UseSqlServer(config.GetValue<string>(ConfigurationOverrides.ConnectionStringKeyDefault))
         );
     }
 

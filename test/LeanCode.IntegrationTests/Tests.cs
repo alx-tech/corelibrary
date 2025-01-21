@@ -21,7 +21,7 @@ public class Tests : IAsyncLifetime
         Assert.Equal($"{App.AuthConfig.UserId}-", res?.Data);
     }
 
-    public Task InitializeAsync() => app.InitializeAsync();
+    public ValueTask InitializeAsync() => app.InitializeAsync();
 
-    public Task DisposeAsync() => app.DisposeAsync().AsTask();
+    public ValueTask DisposeAsync() => app.DisposeAsync();
 }

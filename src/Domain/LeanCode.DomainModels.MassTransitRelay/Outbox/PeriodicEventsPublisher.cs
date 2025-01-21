@@ -90,8 +90,8 @@ public class PeriodicEventsPublisher : IPeriodicAction
     public Task<List<RaisedEvent>> FetchUnpublishedEventsAsync()
     {
         var after = TimeProvider.Now - RelayPeriod;
-        return outboxContext.RaisedEvents
-            .Where(evt => evt.DateOcurred > after && !evt.WasPublished)
+        return outboxContext
+            .RaisedEvents.Where(evt => evt.DateOcurred > after && !evt.WasPublished)
             .OrderBy(evt => evt.DateOcurred)
             .Take(MaxEventsToFetch)
             .ToListAsync();

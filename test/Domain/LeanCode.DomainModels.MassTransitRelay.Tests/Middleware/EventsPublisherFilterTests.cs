@@ -53,9 +53,9 @@ public sealed class EventsPublisherFilterTests : IAsyncLifetime, IDisposable
         Assert.Equal(Consumer.Event, evt.MessageObject);
     }
 
-    public Task InitializeAsync() => Task.CompletedTask;
+    public ValueTask InitializeAsync() => ValueTask.CompletedTask;
 
-    public async Task DisposeAsync()
+    public async ValueTask DisposeAsync()
     {
         await harness.Stop();
         await container.DisposeAsync();

@@ -1,11 +1,11 @@
-using System;
 using Xunit;
-using Xunit.Sdk;
+
+//using Xunit.v3;
 
 namespace LeanCode.Test.Helpers;
 
 [AttributeUsage(AttributeTargets.Method, Inherited = false, AllowMultiple = false)]
-[XunitTestCaseDiscoverer("Xunit.Sdk.FactDiscoverer", "xunit.execution.{Platform}")]
+//[XunitTestCaseDiscoverer("Xunit.Sdk.FactDiscoverer", "xunit.execution.{Platform}")]
 public sealed class LongRunningFact : FactAttribute
 {
 #if EXCLUDE_LONG_RUNNING_TESTS
