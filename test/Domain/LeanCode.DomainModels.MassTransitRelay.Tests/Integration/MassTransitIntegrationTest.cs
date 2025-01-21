@@ -90,8 +90,8 @@ public class MassTransitIntegrationTest : IClassFixture<TestApp>
         await using var scope = testApp.Container.BeginLifetimeScope();
         using var dbContext = scope.Resolve<TestDbContext>();
 
-        var consumedMsgs = await dbContext.ConsumedMessages
-            .OrderBy(e => e.ConsumerType)
+        var consumedMsgs = await dbContext
+            .ConsumedMessages.OrderBy(e => e.ConsumerType)
             .ThenBy(e => e.MessageType)
             .ToListAsync();
 

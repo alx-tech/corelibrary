@@ -27,8 +27,8 @@ internal class LayoutNode : ExtensionIntermediateNode
         }
         else
         {
-            context.CodeWriter
-                .Write("public static readonly string ")
+            context
+                .CodeWriter.Write("public static readonly string ")
                 .Write(LayoutFieldName)
                 .Write(" = \"")
                 .Write(LayoutName)

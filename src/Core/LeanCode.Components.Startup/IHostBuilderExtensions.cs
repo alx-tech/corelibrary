@@ -87,8 +87,8 @@ public static class IHostBuilderExtensions
                 var configuration = context.Configuration;
                 var minLogLevel = configuration.GetValue(MinimumLogLevelKey, LogEventLevel.Verbose);
 
-                var loggerConfiguration = new LoggerConfiguration().ReadFrom
-                    .Configuration(configuration)
+                var loggerConfiguration = new LoggerConfiguration()
+                    .ReadFrom.Configuration(configuration)
                     .Enrich.FromLogContext()
                     .Enrich.WithProperty("project", projectName)
                     .Enrich.WithProperty("app_name", appName)
@@ -99,8 +99,8 @@ public static class IHostBuilderExtensions
                 {
                     var internalLogLevel =
                         minLogLevel > InternalDefaultLogLevel ? minLogLevel : InternalDefaultLogLevel;
-                    loggerConfiguration.MinimumLevel
-                        .Override("Microsoft", internalLogLevel)
+                    loggerConfiguration
+                        .MinimumLevel.Override("Microsoft", internalLogLevel)
                         .MinimumLevel.Override("System", internalLogLevel);
                 }
 

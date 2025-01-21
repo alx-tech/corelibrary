@@ -34,8 +34,8 @@ public sealed class TypedIdGenerator : IIncrementalGenerator
                     CultureInfo.InvariantCulture
                 );
                 var customPrefix = attribute.NamedArguments.FirstOrDefault(a => a.Key == CustomPrefixField).Value.Value;
-                var skipRandomGenerator = attribute.NamedArguments
-                    .FirstOrDefault(a => a.Key == SkipRandomGeneratorField)
+                var skipRandomGenerator = attribute
+                    .NamedArguments.FirstOrDefault(a => a.Key == SkipRandomGeneratorField)
                     .Value.Value;
                 var isValid = IsValidSyntaxNode(n.TargetNode);
                 return new TypedIdData(

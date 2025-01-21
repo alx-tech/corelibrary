@@ -105,8 +105,8 @@ public abstract class DiagnosticVerifier : IDisposable
 
         var projectId = ProjectId.CreateNewId(debugName: TestProjectName);
 
-        var solution = Workspace.CurrentSolution
-            .AddProject(projectId, TestProjectName, TestProjectName, LanguageNames.CSharp)
+        var solution = Workspace
+            .CurrentSolution.AddProject(projectId, TestProjectName, TestProjectName, LanguageNames.CSharp)
             .AddMetadataReferences(projectId, CommonReferences)
             .WithProjectCompilationOptions(
                 projectId,
