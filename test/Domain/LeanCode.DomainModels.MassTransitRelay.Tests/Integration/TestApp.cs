@@ -95,7 +95,7 @@ public sealed class TestApp : IAsyncLifetime, IDisposable
         Container.Dispose();
     }
 
-    public async Task InitializeAsync()
+    public async ValueTask InitializeAsync()
     {
         await dbConnection.OpenAsync();
 
@@ -106,7 +106,7 @@ public sealed class TestApp : IAsyncLifetime, IDisposable
         await bus.StartAsync();
     }
 
-    public async Task DisposeAsync()
+    public async ValueTask DisposeAsync()
     {
         await bus.StopAsync();
         await dbConnection.CloseAsync();

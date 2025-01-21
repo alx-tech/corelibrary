@@ -28,7 +28,7 @@ public class TestApp : LeanCodeTestFactory<Startup>
         }
     }
 
-    public override async Task InitializeAsync()
+    public override async ValueTask InitializeAsync()
     {
         await base.InitializeAsync();
     }
@@ -65,7 +65,7 @@ public class AuthenticatedTestApp : TestApp
     public HttpQueriesExecutor Query { get; private set; } = null!;
     public HttpCommandsExecutor Command { get; private set; } = null!;
 
-    public override async Task InitializeAsync()
+    public override async ValueTask InitializeAsync()
     {
         await base.InitializeAsync();
         if (!await AuthenticateAsync())
